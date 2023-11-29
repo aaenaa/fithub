@@ -6,8 +6,8 @@
 
         <v-app-bar-title>Fithub</v-app-bar-title>
 
-        <v-btn to="/statistics">Statistics</v-btn>
-        <v-btn to="/logs">Logs</v-btn>
+        <v-btn to="/Statistics">Statistics</v-btn>
+        <v-btn to="/Logs">Logs</v-btn>
     </v-app-bar>
 </template>
 
