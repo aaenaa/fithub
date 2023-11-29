@@ -1,9 +1,11 @@
 <template>
     <v-dialog width="800">
         <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" class="mt-8" prepend-icon="mdi-plus" color="#a855f7" variant="flat">
-                Add Supplement
-            </v-btn>
+            <div class="text-right mr-15">
+                <v-btn v-bind="props" class="mt-8" prepend-icon="mdi-plus" color="#a855f7" variant="flat">
+                    Add Supplement
+                </v-btn>
+            </div>
         </template>
 
         <template v-slot:default="{ isActive }">
@@ -12,7 +14,7 @@
                     <v-card-title class="ma-4x">
                         Add Supplements
                     </v-card-title>
-                    <v-btn class="ma-4" @click="isActive.value=false" icon="mdi-close" variant="flat" rounded="0">
+                    <v-btn class="ma-4" @click="isActive.value = false" icon="mdi-close" variant="flat" rounded="0">
 
                     </v-btn>
                 </div>
@@ -29,12 +31,13 @@
                         </v-row>
                         <v-row>
                             <v-col>
-                                <v-select v-model="newSupplement.category" label="Select Categories" :items="preWorkOutItems"></v-select>
+                                <v-select v-model="newSupplement.category" label="Select Categories"
+                                    :items="preWorkOutItems"></v-select>
                             </v-col>
                         </v-row>
                         <v-row>
                             <v-col>
-                                <v-text-field  v-model="newSupplement.imageURL" label="Image URL" hide-details />
+                                <v-text-field v-model="newSupplement.imageURL" label="Image URL" hide-details />
                             </v-col>
                         </v-row>
                     </v-container>
@@ -42,7 +45,7 @@
 
                 <v-card-actions>
                     <v-container>
-                        <v-btn class="mx-4" @click="isActive.value=false; createSupplement()" size="large" variant="tonal"
+                        <v-btn class="mx-4" @click="isActive.value = false; createSupplement()" size="large" variant="tonal"
                             color="#a855f7">Submit</v-btn>
                     </v-container>
                 </v-card-actions>
@@ -53,7 +56,7 @@
 
 <script setup>
 //imports
-import { ref, defineEmits, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { doc, setDoc } from "firebase/firestore";
 import db from '@/firebase/init.js';
 
@@ -74,15 +77,15 @@ async function createSupplement() {
     console.log('create');
     const docRef = doc(db, 'supplements', newSupplement.value.name)
     await setDoc(docRef, newSupplement.value).then(() => {
-            emits('docCreated');
-            
-        }
+        emits('docCreated');
+
+    }
     );
 
     newSupplement.value.name = "",
-    newSupplement.value.brand = "",
-    newSupplement.value.category = "",
-    newSupplement.value.imageURL = ""
+        newSupplement.value.brand = "",
+        newSupplement.value.category = "",
+        newSupplement.value.imageURL = ""
 }
 
 watch(newSupplement.value, () => {

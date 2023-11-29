@@ -1,6 +1,6 @@
 version: '3'
 services:
   web:
-    build: ./natteflex
+    build: ./fithub
     ports:
       - "8081:80"
