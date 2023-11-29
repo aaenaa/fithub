@@ -3,4 +3,4 @@ services:
   web:
     build: ./fithub
     ports:
-      - "8081:80"
+      - "8088:80"
