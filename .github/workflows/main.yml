@@ -20,6 +20,6 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             cd ${{ secrets.PROJECT_PATH }}
-            git pull https://${{ secrets.TOKEN }}@github.com/natteio/natteflex.git 
+            git pull https://${{ secrets.TOKEN }}@github.com/natteio/fithub.git 
             docker-compose down
             docker-compose up -d --build
