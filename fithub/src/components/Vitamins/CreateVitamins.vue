@@ -3,7 +3,7 @@
         <template v-slot:activator="{ props }">
             <div class="text-right mr-15">
                 <v-btn v-bind="props" class="mt-8" prepend-icon="mdi-plus" color="green" variant="flat">
-                    Add Supplement
+                    Add Vitamins
                 </v-btn>
             </div>
         </template>
@@ -12,7 +12,7 @@
             <v-card>
                 <div class="s-100 d-flex justify-space-between">
                     <v-card-title class="ma-4x">
-                        Add Supplements
+                        Add Vitamins
                     </v-card-title>
                     <v-btn class="ma-4" @click="isActive.value = false" icon="mdi-close" variant="flat" rounded="0">
 
@@ -23,21 +23,20 @@
                     <v-container>
                         <v-row>
                             <v-col cols="8">
-                                <v-text-field v-model="newSupplement.name" label="Name" hide-details />
+                                <v-text-field v-model="newVitamin.name" label="Name" hide-details />
                             </v-col>
                             <v-col cols="4">
-                                <v-text-field v-model="newSupplement.brand" label="Brand" hide-details />
+                                <v-text-field v-model="newVitamin.brand" label="Brand" hide-details />
                             </v-col>
                         </v-row>
                         <v-row>
                             <v-col>
-                                <v-select v-model="newSupplement.category" label="Select Categories"
-                                    :items="preWorkOutItems"></v-select>
+                               <v-text-field v-model="newVitamin.description" label="Uses" hide-details />
                             </v-col>
                         </v-row>
                         <v-row>
                             <v-col>
-                                <v-text-field v-model="newSupplement.imageURL" label="Image URL" hide-details />
+                                <v-text-field v-model="newVitamin.imageURL" label="Image URL" hide-details />
                             </v-col>
                         </v-row>
                     </v-container>
@@ -45,7 +44,7 @@
 
                 <v-card-actions>
                     <v-container>
-                        <v-btn class="mx-4" @click="isActive.value = false; createSupplement()" size="large" variant="tonal"
+                        <v-btn class="mx-4" @click="isActive.value = false; createVitamin()" size="large" variant="tonal"
                             color="#a855f7">Submit</v-btn>
                     </v-container>
                 </v-card-actions>
@@ -61,35 +60,34 @@ import { doc, setDoc } from "firebase/firestore";
 import db from '@/firebase/init.js';
 
 const emits = defineEmits(['docCreated']);
-const preWorkOutItems = ['Pre-workout', 'Intra-workout', 'Protein Whey', 'Creatine', 'EAA', 'BCAA'];
 
 //declaration
-const newSupplement = ref(
+const newVitamin = ref(
     {
         name: "",
         brand: "",
-        category: "",
+        description: "",
         imageURL: ""
     }
 )
 
-async function createSupplement() {
+async function createVitamin() {
     console.log('create');
-    const docRef = doc(db, 'supplements', newSupplement.value.name)
-    await setDoc(docRef, newSupplement.value).then(() => {
+    const docRef = doc(db, 'vitamins', newVitamin.value.name)
+    await setDoc(docRef, newVitamin.value).then(() => {
         emits('docCreated');
 
     }
     );
 
-    newSupplement.value.name = "",
-        newSupplement.value.brand = "",
-        newSupplement.value.category = "",
-        newSupplement.value.imageURL = ""
+        newVitamin.value.name = "",
+        newVitamin.value.brand = "",
+        newVitamin.value.description = "",
+        newVitamin.value.imageURL = ""
 }
 
-watch(newSupplement.value, () => {
-    console.log(newSupplement);
+watch(newVitamin.value, () => {
+    console.log(newVitamin);
 });
 
 </script>
