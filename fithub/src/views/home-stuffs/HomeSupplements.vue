@@ -2,7 +2,7 @@
     <CreateSupplements @doc-created="getSavedSupplements()" />
     <v-container>
         <v-row justify="center">
-            <v-card class="mt-4 rounded-lg mx-4" max-width="250" v-for="supplements in supplementList" :key="supplements.name">
+            <v-card class="mt-4 rounded-lg mx-4" max-width="250" v-for="supplements in supplementList" :key="supplements.name" style="background-color: #eeeef0">
                 <v-card-item>
                     <v-img width="250px" height="250px" :src="supplements.imageURL" />
                 </v-card-item>

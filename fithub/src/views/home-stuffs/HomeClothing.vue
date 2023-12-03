@@ -2,7 +2,7 @@
     <CreateClothing @doc-created="getSavedClothes()" />
     <v-container>
         <v-row justify="center">
-            <v-card class="mt-4 rounded-lg mx-4" max-width="250" v-for="clothes in clothList" :key="clothes.name">
+            <v-card class="mt-4 rounded-lg mx-4" max-width="250" v-for="clothes in clothList" :key="clothes.name" style="background-color: #eeeef0">
                 <v-card-item>
                     <v-img width="250px" height="250px" :src="clothes.imageURL" />
                 </v-card-item>
