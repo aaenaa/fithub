@@ -49,10 +49,10 @@ onMounted(() => {
 async function getSavedClothes() {
     console.log('retrieve')
     const colRef = collection(db, 'clothes')
-    const vitaminQuery = await getDocs(query(colRef))
+    const clothQuery = await getDocs(query(colRef))
 
     clothList.value = []
-    vitaminQuery.forEach((doc) => {
+    clothQuery.forEach((doc) => {
         clothList.value.push(doc.data())
     })
 }

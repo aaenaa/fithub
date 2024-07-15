@@ -20,6 +20,9 @@
                 <v-btn class="w-100" variant="flat" to="/home/clothing">Clothing</v-btn>
             </v-list-item>
             <v-list-item>
+                <v-btn class="w-100" variant="flat" to="/home/accessories">Accessories</v-btn>
+            </v-list-item>
+            <v-list-item>
                 <v-btn class="w-100" variant="flat" to="/home/program">Program</v-btn>
             </v-list-item>
         </div>
